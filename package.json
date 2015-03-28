@@ -1,0 +1,25 @@
+{
+  "name": "gulp-task-loader-recursive",
+  "version": "1.0.0",
+  "description": "Easily organize gulp tasks in separate files and folders",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BohdanTkachenko/gulp-task-loader-recursive.git"
+  },
+  "keywords": [
+    "gulp",
+    "task",
+    "loader",
+    "recursive"
+  ],
+  "author": "Bohdan Tkachenko <bohdan@tkachenko.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BohdanTkachenko/gulp-task-loader-recursive/issues"
+  },
+  "homepage": "https://github.com/BohdanTkachenko/gulp-task-loader-recursive"
+}
