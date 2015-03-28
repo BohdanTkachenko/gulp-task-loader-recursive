@@ -28,6 +28,10 @@ function initTasks(dir, prefixStack) {
         return;
       }
 
+      if (typeof task !== 'function') {
+        task = function () {};
+      }
+
       if (typeof task.dependencies === 'object') {
         gulp.task(taskName, task.dependencies, task);
       } else {
