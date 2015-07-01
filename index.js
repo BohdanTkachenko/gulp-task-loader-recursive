@@ -22,21 +22,22 @@ function initTasks(gulp, dir, prefixStack) {
       initTasks(gulp, filePath, prefixStack.concat([file]));
     } else if (fileRe.test(file)) {
       taskName = prefixStack.concat([ file.replace(fileRe, '') ]).join(':');
-
       task = require(filePath);
-      if (typeof task !== 'function' && typeof task.dependencies !== 'object') {
+
+      var taskFn;
+      var dependencies;
+
+      if (!task) {
         return;
       }
 
-      var dependencies = task.dependencies;
-      if (typeof task !== 'function') {
-        task = function () {};
-      }
+      taskFn = typeof task === 'function' ? task : typeof task.default === 'function' ? task.default : function () {};
+      dependencies = typeof task.dependencies === 'object' ? task.dependencies : null;
 
-      if (typeof dependencies === 'object') {
-        gulp.task(taskName, dependencies, task);
+      if (dependencies) {
+        gulp.task(taskName, dependencies, taskFn);
       } else {
-        gulp.task(taskName, task);
+        gulp.task(taskName, taskFn);
       }
     }
   });
