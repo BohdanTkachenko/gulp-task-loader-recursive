@@ -3,7 +3,7 @@
     "node": true
   },
   "rules": {
-    "quotes": [2, "single", "avoid-escape"],
-    "strict": false
+    "quotes": [ 2, "single", "avoid-escape" ],
+    "strict": 0
   }
 }

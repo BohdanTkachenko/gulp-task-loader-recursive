@@ -1,15 +1,15 @@
 var fs = require('fs');
 var path = require('path');
-var gulp = require('gulp');
 
-function initTasks(dir, prefixStack) {
+function initTasks(gulp, dir, prefixStack) {
   dir = path.resolve(dir || 'tasks');
   prefixStack = prefixStack
     ? (typeof prefixStack === 'string' ? prefixStack.split(':') : prefixStack)
     : []
   ;
 
-  var fileRe = /.js$/;
+  var extensions = Object.keys(require.extensions).map(function (ext) { return ext.replace(/^\.*/, ''); });
+  var fileRe = new RegExp('\.(' + extensions.join('|') + ')$');
 
   var files = fs.readdirSync(dir);
   files.forEach(function (file) {
@@ -19,7 +19,7 @@ function initTasks(dir, prefixStack) {
     ;
 
     if (fs.lstatSync(filePath).isDirectory()) {
-      initTasks(filePath, prefixStack.concat([file]));
+      initTasks(gulp, filePath, prefixStack.concat([file]));
     } else if (fileRe.test(file)) {
       taskName = prefixStack.concat([ file.replace(fileRe, '') ]).join(':');
 

@@ -1,5 +1,8 @@
 # gulp-task-loader-recursive
-Easily organize gulp tasks in separate files and folders
+Easily organize gulp tasks in separate files and folders. It accepts any file extension that can be required by node.
+
+## Update
+Please note, that version 1.1.0 breaking changes. Now you should pass gulp as a first argument. See examples in Usage section below.
 
 ## Install
 ```npm install --save-dev gulp-task-loader-recursive```
@@ -48,15 +51,18 @@ module.exports.dependencies = [ 'build:css' ];
 ## Usage
 To be able to use this tasks you need to add the following to your gulpfile.js:
 ```
-require('gulp-task-loader-recursive')();
+var gulp = require('gulp');
+require('gulp-task-loader-recursive')(gulp);
 ```
 
 If you want to use other tasks directory, just pass it as a parameter:
 ```
-require('gulp-task-loader-recursive')('./gulp-tasks');
+var gulp = require('gulp');
+require('gulp-task-loader-recursive')(gulp, './gulp-tasks');
 ```
 
 You can also provide prefix for all tasks loaded by this method:
 ```
-require('gulp-task-loader-recursive')(null, 'custom:tasks:prefix');
+var gulp = require('gulp');
+require('gulp-task-loader-recursive')(gulp, null, 'custom:tasks:prefix');
 ```
