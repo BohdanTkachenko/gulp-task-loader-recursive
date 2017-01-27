@@ -1,4 +1,6 @@
 # gulp-task-loader-recursive
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/BohdanTkachenko/gulp-task-loader-recursive.svg)](https://greenkeeper.io/)
 Easily organize gulp tasks in separate files and folders. It accepts any file extension that can be required by node.
 
 ## Update
